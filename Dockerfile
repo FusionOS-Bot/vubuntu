@@ -20,6 +20,12 @@ ENV VNC_PASS="samplepass" \
     NGROK_AUTH_TOKEN="placeholder" \
 #Brave Shared Memory Usage (Set it to 0 to disable the use of /dev/shm for Brave Browser, helpful for Heroku)
     BRAVE_USE_SHM=1 \
+#Self Backup: Enable Backup Of App Data And App Cache Using Rclone, disabled by default
+    SELF_BACKUP=0 \
+#Rclone Config Link: rclone.conf : pasted to gist.github.com [Raw Links Only][Secret Gist Only]
+    RCLONE_CONFIG_LINK="placeholder" \
+#Backup Script Link: Backup Script Which Specifies Which Folders Are To Be Synced By Rclone.
+    BACKUP_SCRIPT_LINK="https://gist.githubusercontent.com/Box-boi/dda8fe9a1be8c21b5666fd317a9d40cc/raw/rclone-backup-script.sh" \
 #Locale
     LANG=en_US.UTF-8 \
     LANGUAGE=en_US.UTF-8 \

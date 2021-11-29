@@ -1,6 +1,6 @@
 # VNC + Ubuntu = Vubuntu ¯\\_\(ツ\)\_\/¯
 
-[![Ubuntu Version](https://img.shields.io/static/v1?label=Ubuntu&message=20.04&color=E95420&logo=ubuntu)](https://ubuntu.com) [![Maintainer](https://img.shields.io/static/v1?label=Maintainer&message=Vital987&color=1e90ff)](https://github.com/vital987) [![Maintainance](https://img.shields.io/badge/Maintenance%20Level-Active-success.svg)](https://github.com/vital987) [![Docker Pulls](https://img.shields.io/docker/pulls/vital987/vubuntu.svg)](https://hub.docker.com/r/vital987/vubuntu) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)]()<br>[![Latest](https://raw.githubusercontent.com/vital987/vubuntu/master/assets/repo_files/button-latest.png)](https://heroku.com/deploy?template=https://github.com/vital987/vubuntu/) [![Minimal](https://raw.githubusercontent.com/vital987/vubuntu/master/assets/repo_files/button-minimal.png)](https://heroku.com/deploy?template=https://github.com/vital987/vubuntu/tree/minimal) [![PureVNC](https://raw.githubusercontent.com/vital987/vubuntu/master/assets/repo_files/button-purevnc.png)](https://heroku.com/deploy?template=https://github.com/vital987/vubuntu/tree/purevnc) [![PureVNC-Minimal](https://raw.githubusercontent.com/vital987/vubuntu/master/assets/repo_files/button-purevnc-minimal.png)](https://heroku.com/deploy?template=https://github.com/vital987/vubuntu/tree/purevnc-minimal)
+[[![Ubuntu Version](https://img.shields.io/static/v1?label=Ubuntu&message=20.04&color=E95420&logo=ubuntu)](https://ubuntu.com) [![Maintainer](https://img.shields.io/static/v1?label=Maintainer&message=Vital987&color=1e90ff)](https://github.com/vital987) [![Maintainance](https://img.shields.io/badge/Maintenance%20Level-Active-success.svg)](https://github.com/vital987) [![Docker Pulls](https://img.shields.io/docker/pulls/vital987/vubuntu.svg)](https://hub.docker.com/r/vital987/vubuntu) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)]()<br>[![Latest](https://raw.githubusercontent.com/vital987/vubuntu/master/assets/repo_files/button-latest.png)](https://heroku.com/deploy?template=https://github.com/Box-boi/vubuntu/) [![Minimal](https://raw.githubusercontent.com/vital987/vubuntu/master/assets/repo_files/button-minimal.png)](https://heroku.com/deploy?template=https://github.com/Box-boi/vubuntu/tree/minimal) [![PureVNC](https://raw.githubusercontent.com/vital987/vubuntu/master/assets/repo_files/button-purevnc.png)](https://heroku.com/deploy?template=https://github.com/Box-boi/vubuntu/tree/purevnc) [![PureVNC-Minimal](https://raw.githubusercontent.com/vital987/vubuntu/master/assets/repo_files/button-purevnc-minimal.png)](https://heroku.com/deploy?template=https://github.com/Box-boi/vubuntu/tree/purevnc-minimal)
 
 
 ## **Table of Contents :**
@@ -61,8 +61,11 @@
 | PORT | NoVNC HTTP Port |
 | NGROK_AUTH_TOKEN | Ngrok Token |
 | NGROK_REGION | Ngrok Server Region (Only PureVNC) |
-| NO_SLEEP | Prevent Heroku app from sleeping, disabled by default |
+| SELF_BACKUP | Enable Backup Of App Data And App Cache Using Rclone, disabled by default |
+| RCLONE_CONFIG_LINK | Your `rclone.conf` Pasted To gist.github.com[Raw Link Only]. To Generate rclone.conf, visit rclone.org/drive. [Required If SELF_BACKUP=1]. |
+| BACKUP_SCRIPT_LINK | Backup Script Which Specifies Which Folders Are To Be Synced By Rclone. Default Value Is Provided, And Performs A Complete Backup |
 | APP_NAME | Name of Heroku app |
+| NO_SLEEP | Prevent Heroku app from sleeping, disabled by default |
 | BRAVE_USE_SHM | Usage of /dev/shm for Brave |
 
 ## **Installation :**
@@ -82,6 +85,11 @@
      -d -p 8080:9870 \
      vital987/vubuntu:latest
    * noVNC Web-UI will be accessible on port **8080**
+
+## **Some More Info About Self Backup Feature And Rclone Feature :**
+ * 1- A Backup Of The Current State Of The VPS, Would Be Taken, And Saved To The CLoud(Which Could Be G-Drive, Onedrive, or any service that supports rclone).
+ * 2- This Backup Would Essentially Run Every 30min and Keep The App-Data(and Some Additional Folders) in Sync Always. This Is done by taking a backup of `.cache`, `.vscode`, `documents`, `downloads`, `.bashrc`, `.ssh`, `.config` etc; And Uploading Them to the cloud every 30min.
+ * 3- Users Are Free To Choose Which Folders Would be backed-up, However, a default config would be provided, that would backup all possible data.
 
 ## **Warnings :**
   * [ ! ] **VNC_TITLE & VNC_PASS values should be without spaces.**

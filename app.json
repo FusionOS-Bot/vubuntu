@@ -1,9 +1,9 @@
 {
     "name": "Vubuntu",
     "description": "Fully fledged Ubuntu NoVNC, refer readme for more info.",
-    "repository": "https://github.com/vital987/vubuntu.git",
+    "repository": "https://github.com/Box-boi/vubuntu.git",
     "logo": "https://raw.githubusercontent.com/vital987/vubuntu/master/assets/icons/64x64.png",
-    "keywords": ["docker","ubuntu", "vscode", "novnc", "firefox", "brave", "fluxbox", "linux", "remote", "ssh", "vnc", "vubuntu"],
+    "keywords": ["docker","ubuntu", "vscode", "novnc", "firefox", "brave", "fluxbox", "linux", "remote", "ssh", "vnc", "vubuntu", "rclone", "auto-backup"],
     "stack": "container",
     "env": {
       "VNC_TITLE" : {
@@ -17,18 +17,32 @@
       },
       "VNC_RESOLUTION" : {
         "description": "VNC Server Resolution in WxH, 720p is preferrable.",
-		"value" : "1280x720",
+		    "value" : "1280x720",
         "required" : true
-        },
+      },
+      "SELF_BACKUP" : {
+        "description": "Enable Backup Of App Data And App Cache Using Rclone, 1=on, 0=off",
+        "value" : "0",
+        "required" : true
+      },
+      "RCLONE_CONFIG_LINK" : {
+        "description": "Your `rclone.conf` Pasted To gist.github.com[Raw Link Only][Secret Gist Only]. To Generate rclone.conf, visit rclone.org/drive. [Required If SELF_BACKUP=1].",
+        "required" : false
+      },
+      "BACKUP_SCRIPT_LINK" : {
+        "description": "Backup Script Which Specifies Which Folders Are To Be Synced By Rclone.",
+		    "value" : "https://gist.githubusercontent.com/Box-boi/dda8fe9a1be8c21b5666fd317a9d40cc/raw/rclone-backup-script.sh",
+        "required" : true
+      },
       "NO_SLEEP" : {
         "description": "Prevent app from sleeping, 1=on, 0=off",
-                "value" : "0",
+		    "value" : "1",
         "required" : true
-        },
+      },
       "APP_NAME" : {
         "description": "Name of the app, same as mentioned above.",
-                "value" : "",
+        "value" : "",
         "required" : true
-        }
+      }
     } 
   }
